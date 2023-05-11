@@ -1,0 +1,38 @@
+{
+	"name": "cliroom",
+	"version": "1.0.0",
+	"description": "Put here a essential description of what users can achieve with your tool",
+	"bin": "src/index.js",
+	"type": "module",
+	"scripts": {
+		"build": "pkg .",
+		"clean": "rimraf dist build",
+		"b": "pnpm clean && pnpm build"
+	},
+	"pkg": {
+		"assets": [
+			"./package.json",
+			"./contracts/**/*",
+			"./node_modules/.pnpm/figlet@*/node_modules/figlet/fonts/ANSI Shadow.flf"
+		],
+		"targets": [
+			"latest-linux-x64"
+		],
+		"outputPath": "dist"
+	},
+	"keywords": [],
+	"author": "Dyne.org",
+	"license": "MIT",
+	"dependencies": {
+		"@dyne/zencode-chain": "^1.2.0",
+		"commander": "^10.0.1",
+		"figlet": "^1.6.0",
+		"zenroom": "^2.21.1"
+	},
+	"devDependencies": {
+		"gradient-string": "^2.0.2",
+		"pkg": "^5.8.1",
+		"rimraf": "^5.0.0",
+		"yaml": "^2.2.2"
+	}
+}
