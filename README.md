@@ -84,6 +84,7 @@ To start using cliroom
 
 ##   Roadmap
 
+- [ ] cookiecutter
 - [ ] restroom integration
 - [ ] test stdin
 - [ ] files params arguments
