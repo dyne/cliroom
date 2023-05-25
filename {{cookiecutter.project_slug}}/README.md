@@ -84,10 +84,10 @@ To start using cliroom
 
 ##   Roadmap
 
-- [ ] cookiecutter
+- [x] cookiecutter
 - [ ] restroom integration
-- [ ] test stdin
-- [ ] files params arguments
+- [x] test stdin
+- [x] files params arguments
 - [ ] args & opts validation
 - [ ] girhub action build and release of the binaries
 - [ ] documentation & tutorials
