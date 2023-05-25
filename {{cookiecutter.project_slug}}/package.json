@@ -19,7 +19,18 @@
 			"./contracts/**/*",
 			"./node_modules/.pnpm/figlet@*/node_modules/figlet/fonts/ANSI Shadow.flf"
 		],
-		"targets": {{ json.dumps([f'latest-{p}-{a}' for a in cookiecutter.arch for p in cookiecutter.platform]) }},
+		"targets": [
+			"latest-alpine-x64",
+			"latest-alpine-arm64",
+			"latest-linux-x64",
+			"latest-linux-arm64",
+			"latest-linuxstatic-x64",
+			"latest-linuxstatic-arm64",
+			"latest-macos-x64",
+			"latest-macos-arm64",
+			"latest-win-x64",
+			"latest-win-arm64"
+		],
 		"outputPath": "dist"
 	},
 	"keywords": [],
