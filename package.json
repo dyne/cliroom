@@ -1,7 +1,11 @@
 {
-	"name": "cliroom",
+	"name": "{{ cookiecutter.project_name }}",
 	"version": "1.0.0",
-	"description": "Put here a essential description of what users can achieve with your tool",
+	"description": "{{ cookiecutter.project_description }}",
+	"author": {
+		"name": "{{cookiecutter.full_name}}",
+		"email": "{{cookiecutter.email}}"
+	},
 	"bin": "src/index.js",
 	"type": "module",
 	"scripts": {
@@ -15,13 +19,10 @@
 			"./contracts/**/*",
 			"./node_modules/.pnpm/figlet@*/node_modules/figlet/fonts/ANSI Shadow.flf"
 		],
-		"targets": [
-			"latest-linux-x64"
-		],
+		"targets": {{ json.dumps([f'latest-{p}-{a}' for a in cookiecutter.arch for p in cookiecutter.platform]) }},
 		"outputPath": "dist"
 	},
 	"keywords": [],
-	"author": "Dyne.org",
 	"license": "MIT",
 	"dependencies": {
 		"@dyne/zencode-chain": "^1.2.0",
