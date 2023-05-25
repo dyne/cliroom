@@ -71,17 +71,20 @@ contracts.map((c) => {
       }
 
       if (this.args.length > 0) {
-        params.data = JSON.stringify({ ...params.data, args: this.args });
+        params.data = { ...params.data, args: this.args };
       }
 
       try {
         const keys = fs
           .readFileSync(path.join(DIR, `${c}.keys`), "utf-8")
           .toString();
-        params.keys = JSON.stringify(JSON.parse(keys));
+        params.keys = JSON.parse(keys);
       } catch (e) {}
 
-      zencode_exec(contract, params)
+      zencode_exec(contract, {
+        data: JSON.stringify(params.data),
+        keys: JSON.stringify(params.keys),
+      })
         .then(({ result }) => console.log(result))
         .catch(({ logs }) => console.error(logs));
     }

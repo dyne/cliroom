@@ -23,7 +23,9 @@ const addArgument = (a) => {
 
 const addOption = (o) => {
   const option = new commander.Option(o.name, o.description);
-  const opts = "hidden default choices env preset conflicts implies".split(" ");
+  const opts = "hidden default choices env preset conflicts implies file".split(
+    " "
+  );
 
   opts.map((attribute) => {
     if (o.hasOwnProperty(attribute)) {
@@ -37,6 +39,16 @@ const addOption = (o) => {
         option.choices(params);
       } else if (attribute === "env") {
         option.env(...params);
+      } else if (attribute === "file") {
+        option.argParser((val, previous) => {
+          if (val === "-") {
+            // read from stdin
+            return fs.readFileSync(0, "utf-8");
+          } else {
+            // read from file
+            return fs.readFileSync(val, "utf-8");
+          }
+        });
       } else {
         const method = option[attribute];
         method(params);
